@@ -12,4 +12,8 @@ charlist =  {"flash":
 #print(charlist[char_name.lower()][char_stat.lower()])
 
 
-print(f"{char_name()}'s {char_stat()} is {charlist[char_name][char_stat]}")
+print(f"{char_name()}'s {char_stat()} {charlist[char_name()][char_stat()]}")
+
+
+
+
