@@ -19,10 +19,10 @@ def showStatus():
     # print the player's current status
     print('---------------------------')
     print('You are in the ' + currentRoom)
-    # print the current inventory
-    print('Inventory : ' + str(inventory))
     #inserts room description from dictionary
     print(f"{rooms[currentRoom]['desc']}")
+    # print the current inventory
+    print('Inventory : ' + str(inventory))
     # print an item if there is one
     if "item" in rooms[currentRoom]:
         print('You see a ' + rooms[currentRoom]['item'])
