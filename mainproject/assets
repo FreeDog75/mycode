@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+
+import random
+import time
+
+
+#Sets default starting location
+starterRoom = 'Hall'
+
+
+#Randomly establishes safe combination numbers
+safe_combo1 = random.randint(10, 99)
+safe_combo2 = random.randint(10, 99)
+safe_combo3 = random.randint(10, 99)
+
+#a dictionary linking a room to other rooms
+rooms = {
+    'Hall': {
+        # commands
+        'go': 'go',
+        'get': 'get',
+        # Directions and description
+        'north': 'Kitchen',
+        'south': 'Garden',
+        'east': 'Dining Room',
+        'west': 'Bedroom',
+        'desc': 'It is dark and dismal with an intense sense of foreboding driving and an immense desire in you to escape as quickly as possible!',
+        # room assets openly available
+        'item': '',
+
+    },
+
+    'Kitchen': {
+        #commands
+        'go': 'go',
+        'get': 'get',
+        # Directions and description
+        'south': 'Hall',
+        'desc': 'There are pots and dishes strewn across the room and blood splatters all over the walls.\nOn one of the walls is the number 2' + str(safe_combo1) + ' hastily written in blood.',
+        # room assets openly available
+        'item': 'key',
+
+    },
+    'Dining Room': {
+        #commands
+        'go': 'go',
+        'get': 'get',
+        #Directions and description
+        'west': 'Hall',
+        'desc': 'You surprised by the fact that the dining room is immaculate.\nThe table has been expertly set for an evening of fine dining except.\nThe only blemish you see is the number 1' + str(safe_combo2) + ' carved into the table',
+        # room assets openly available
+        'item': 'apple',
+        # Entry Requirements
+        'ereq': 'key',
+        'efail': 'The door is lock up tight. You need to find a key!',
+        'esuccess': '\nThe door slams behind you and a Spectre appears before you shaking dice in his hands.\nWe\'re going to play a dice game called seven eleven, to seal your fate.\nRoll the dice and if they add up to 7, 11 or you roll doubles you get a point.\nThe highest score out of 5 rolls wins.\n',
+        # monster data
+        'mons': 'Spectre',
+        #Game data
+        'game': 'dice',
+    },
+    'Bedroom': {
+        #commands
+        'go': 'go',
+        'get': 'get',
+        'open': 'open',
+        #Directions and decription
+        'east': 'Hall',
+        'desc': 'The room is disheveled and wreaks of death and sorrow.\nThe ticking of the grandfather clock send a chill up you spine.\nYou then notice the clocks hands are stuck on 3:' + str(safe_combo3) + '.',
+        #room assets openly available
+        'item': '',
+        #Entry Requirements
+        'ereq': 'apple',
+        'efail': 'You\'re suddenly forced out of the room by a Shinigami. It say\'s don\'t come back until you have something I\'ll like',
+        'esuccess': 'The Shinigami say\'s, \"Oh you brought me an apple. I guess we could be friends so long as you keep bringing me these red delicacies.\"\nHe walks off as chomping the apple causing chucks of apple to fly through the air.',
+        #monster data
+        'mons': 'Shinigami',
+        #Container data
+        'container': 'safe',
+        'containeropen': 'You grab the safe\'s handle but it doesnt budge. One the door is scrawled the word\'s \"You can open this door if you open your mind to the clues within the rooms of this house.\"',
+        'containerloc': 'You see a safe in the corner of the room',
+        'creq': 'safecrack',
+    },
+    'Garden': {
+        # Directions and decription
+        'desc': "The door breaks free and you step out of the house just as the sun begins to rise.",
+        # Entry Requirements
+        'ereq': 'notebook',
+        'efail': 'You can\'t leave until you\'ve found the nota mortum.',
+        'gamestatus': 'win'
+    },
+}
+
+
+
+
+
+
+#Establishes questions and answer for riddle portion of game
+riddle = {
+    1: {
+        'riddle1': 'Test riddle1',
+        'answer1': 'Test answer1',
+    },
+    2: {
+        'riddle2': 'Test riddle2',
+        'answer2': 'Test answer2',
+    },
+    3: {
+        'riddle3': 'Test riddle3',
+        'answer3': 'Test answer3',
+    }
+}
+
